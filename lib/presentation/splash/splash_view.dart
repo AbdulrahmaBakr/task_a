@@ -1,7 +1,8 @@
 import 'dart:async';
 
- 
 import 'package:flutter/material.dart';
+import 'package:task_a/resources/assets_manager.dart';
+import 'package:task_a/resources/color_manager.dart';
 import 'package:task_a/resources/routes_manager.dart';
 
 class SplashView extends StatefulWidget {
@@ -13,27 +14,38 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   Timer? _timer;
-  _delay()   {
-    _timer =   Timer(const Duration(seconds: 5), next);
+  _delay() {
+    _timer = Timer(const Duration(seconds: 10), next);
   }
 
   next() async {
-   await Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+    await Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
   }
 
   @override
   void initState() {
     super.initState();
-    _delay();
+    // _delay();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: ColorManager.primary,
-      // body: Center(
-      //   child: Image.asset(AssetsManager.splashLogo),
-      // ),
+      backgroundColor: ColorManager.primary,
+      body: Center(
+        child: Center(
+          child: ClipOval(
+            child: SizedBox(
+              width: 300.0, // Adjust the width as needed
+              height: 300.0, // Adjust the height as needed
+              child: Image.asset(
+                AssetsManager.splashLogo,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
