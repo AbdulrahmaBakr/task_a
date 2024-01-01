@@ -19,13 +19,19 @@ dependencies:
   get: ^4.6.6
   animated_button: ^0.2.0
   audioplayers: ^5.2.1
+  flutter_animate: ^4.3.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/bot_icon.png"
+  min_sdk_android: 21
   flutter_lints: ^2.0.0
-
+ 
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -38,4 +44,4 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - sound/
+    - assets/sounds/

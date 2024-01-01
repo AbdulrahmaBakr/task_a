@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:intro_screen_onboarding_flutter/introduction.dart';
+ import 'package:intro_screen_onboarding_flutter/introduction.dart';
 import 'package:intro_screen_onboarding_flutter/introscreenonboarding.dart';
 import 'package:task_a/resources/assets_manager.dart';
 import 'package:task_a/resources/color_manager.dart';

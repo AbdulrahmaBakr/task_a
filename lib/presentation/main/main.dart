@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:animated_button/animated_button.dart';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:task_a/presentation/widget/custom_icon_button.dart';
 
@@ -32,21 +31,30 @@ class MainView extends StatelessWidget {
                   children: [
                     CustomIconButton(
                       icon: Icons.settings,
-                      onPressed: () => handleButtonPress('Settings'),
+                      onPressed: () {
+                        handleButtonPress('Settings');
+                        playSound('sounds/sound.mp3');
+                      },
                     ),
                     const SizedBox(width: 15),
                     CustomIconButton(icon: Icons.volume_up, onPressed: () {}),
                     const SizedBox(width: 15),
                     CustomIconButton(
                       icon: Icons.chat,
-                      onPressed: () => handleButtonPress('Say Hello'),
+                      onPressed: () {
+                        handleButtonPress('Say Hello');
+                        playSound('sounds/sound2.mp3');
+                      },
                     ),
                   ],
                 ),
                 const SizedBox(height: 15),
                 CustomIconButton(
                   icon: Icons.arrow_upward,
-                  onPressed: () => handleButtonPress('Move Forward'),
+                  onPressed: () {
+                    handleButtonPress('Move Forward');
+                    playSound('sounds/sound4.mp3');
+                  },
                 ),
                 const SizedBox(height: 15),
                 Row(
@@ -54,29 +62,41 @@ class MainView extends StatelessWidget {
                   children: [
                     CustomIconButton(
                       icon: Icons.arrow_back,
-                      onPressed: () => handleButtonPress('Turn Left'),
+                      onPressed: () {
+                        handleButtonPress('back');
+                        playSound('sounds/sound5.mp3');
+                      },
                     ),
                     const SizedBox(width: 30),
                     CustomIconButton(
                       icon: Icons.stop_circle_rounded,
-                      onPressed: () => handleButtonPress('Turn Right'),
+                      onPressed: () {
+                        handleButtonPress('stop');
+                        playSound('sounds/sound7.mp3');
+                      },
                     ),
                     const SizedBox(width: 10),
                     CustomIconButton(
                       icon: Icons.play_circle_sharp,
-                      onPressed: () => handleButtonPress('Turn Right'),
+                      onPressed: () {
+                        handleButtonPress(' play');
+                        playSound('sounds/sound5.mp3');
+                      },
                     ),
                     const SizedBox(width: 30),
                     CustomIconButton(
                       icon: Icons.arrow_forward,
-                      onPressed: () => handleButtonPress('Turn Right'),
+                      onPressed: () => handleButtonPress('Turn forward'),
                     ),
                   ],
                 ),
                 const SizedBox(height: 15),
                 CustomIconButton(
                   icon: Icons.arrow_downward_rounded,
-                  onPressed: () => handleButtonPress('Move Forward'),
+                  onPressed: () {
+                    handleButtonPress('Move Down');
+                    playSound('sounds/sound2.mp3');
+                  },
                 ),
                 const SizedBox(height: 15),
                 Row(
@@ -84,13 +104,19 @@ class MainView extends StatelessWidget {
                   children: [
                     CustomIconButton(
                       icon: Icons.roundabout_left,
-                      onPressed: () => handleButtonPress('Settings'),
+                      onPressed: () {
+                        handleButtonPress('round left');
+                        playSound('sounds/sound.mp3');
+                      },
                     ),
                     const SizedBox(width: 15),
                     const SizedBox(width: 15),
                     CustomIconButton(
                       icon: Icons.roundabout_right,
-                      onPressed: () => handleButtonPress('Say Hello'),
+                      onPressed: () {
+                        handleButtonPress('round right');
+                        playSound('sounds/sound7.mp3');
+                      },
                     ),
                   ],
                 ),
@@ -105,5 +131,10 @@ class MainView extends StatelessWidget {
 
   void handleButtonPress(String action) {
     print('Button pressed: $action');
+  }
+
+  Future<void> playSound(String soundPath) async {
+    final player = AudioPlayer();
+    await player.play(AssetSource(soundPath));
   }
 }
