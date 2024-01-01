@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_a/presentation/main/main.dart';
 import 'package:task_a/presentation/onboarding/onboarding_view.dart';
 import 'package:task_a/presentation/splash/splash_view.dart';
 import 'package:task_a/resources/strings_manager.dart';
@@ -6,8 +7,8 @@ import 'package:task_a/resources/strings_manager.dart';
 class Routes {
   static const String splashRoute = "/";
   static const String onBoardingRoute = "/onBoarding";
-  static const String mainRoute = "/main";
-}
+  static const String main = "/mian";
+ }
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
@@ -16,7 +17,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashView());
 
       case Routes.onBoardingRoute:
-        return MaterialPageRoute(builder: (_) => const OnBoardingView());
+        return MaterialPageRoute(builder: (_) => OnBoardingView());
+        case Routes.main:
+        return MaterialPageRoute(builder: (_) => MainView());
 
       default:
         return unDefinedRoute();

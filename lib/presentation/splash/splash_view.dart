@@ -16,7 +16,7 @@ class _SplashViewState extends State<SplashView> {
   final bool _isTapped = false;
   Timer? _timer;
   _delay() {
-    _timer = Timer(const Duration(seconds: 10), next);
+    _timer = Timer(const Duration(seconds: 3), next);
   }
 
   next() async {
@@ -36,7 +36,7 @@ class _SplashViewState extends State<SplashView> {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [AnimatedRoundedImage(), Text('click me ')],
+          children: [AnimatedRoundedImage(), Text('click me to start ')],
         ),
       ),
     );
