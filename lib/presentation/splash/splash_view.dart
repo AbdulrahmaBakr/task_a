@@ -13,6 +13,7 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  final bool _isTapped = false;
   Timer? _timer;
   _delay() {
     _timer = Timer(const Duration(seconds: 10), next);
@@ -25,25 +26,17 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    // _delay();
+    _delay();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.primary,
-      body: Center(
-        child: Center(
-          child: ClipOval(
-            child: SizedBox(
-              width: 300.0, // Adjust the width as needed
-              height: 300.0, // Adjust the height as needed
-              child: Image.asset(
-                AssetsManager.splashLogo,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [AnimatedRoundedImage(), Text('click me ')],
         ),
       ),
     );
@@ -53,5 +46,56 @@ class _SplashViewState extends State<SplashView> {
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+}
+
+class AnimatedRoundedImage extends StatefulWidget {
+  const AnimatedRoundedImage({super.key});
+
+  @override
+  _AnimatedRoundedImageState createState() => _AnimatedRoundedImageState();
+}
+
+class _AnimatedRoundedImageState extends State<AnimatedRoundedImage> {
+  bool _isTapped = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _toggleAnimation();
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        width: _isTapped ? 300.0 : 150.0,
+        height: _isTapped ? 300.0 : 150.0,
+        curve: Curves.easeInOut,
+        child: ClipOval(
+          child: Image.asset(
+            AssetsManager.splashLogo,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _toggleAnimation() {
+    setState(() {
+      _isTapped = !_isTapped;
+    });
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: AnimatedRoundedImage(),
+      ),
+    );
   }
 }
